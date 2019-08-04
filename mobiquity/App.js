@@ -6,24 +6,16 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
-import {
-  SafeAreaView,
-  View,
-  StatusBar,
-} from 'react-native';
+import React from 'react';
 import AppNavigator from './src/Navigation/AppNavigation';
-
-
+import { Provider } from 'react-redux';
+import store from './src/Store';
 
 const App = () => {
   return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
+    <Provider store={store}>   
        <AppNavigator></AppNavigator>
-      </SafeAreaView>
-    </Fragment>
+   </Provider>
   );
 };
 

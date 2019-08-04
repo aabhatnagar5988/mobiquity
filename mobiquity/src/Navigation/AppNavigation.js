@@ -1,15 +1,22 @@
-import {  createStackNavigator } from 'react-navigation';
+import {  createStackNavigator,createAppContainer,createSwitchNavigator } from 'react-navigation';
 import {Screens} from '../Constants/NavConstants';
-import SplashScreen from '../Onboarding/Splash';
-import HomeScreen from '../HomeScreen/HomeScreenList';
-import AddScreen from '../AddPeople/AddPeople';
+import SplashScreen from '../Screens/Onboarding/Splash';
+import HomeScreen from '../Screens/HomeScreen/HomeScreenList';
+import AddScreen from '../Screens/AddPeople/AddPeople';
 
-const AppNavigation = createStackNavigator({
-  [Screens.Splash]: SplashScreen,
+const AppFlow = createStackNavigator({
   [Screens.Home]: HomeScreen,
   [Screens.AddForm]: AddScreen,
 }, {
   headerMode: 'none',
 });
 
-export default AppNavigation;
+const AppNavigation = createSwitchNavigator({
+  [Screens.Splash]: SplashScreen,
+  [Screens.AppFlow]:AppFlow,
+}, {
+  headerMode: 'none',
+});
+
+
+export default createAppContainer(AppNavigation);
